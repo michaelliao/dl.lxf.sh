@@ -19,5 +19,10 @@ jobs:
         run:
           pip install -r requirements.txt
       - name: Generate Index
+        env:
+          BUCKET: ${{ secrets.BUCKET }}
+          ENDPOINT: ${{ secrets.ENDPOINT }}
+          ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+          ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
         run:
           python3 gen.py
