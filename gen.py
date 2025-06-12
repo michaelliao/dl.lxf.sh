@@ -25,9 +25,10 @@ class Dir(object):
         self.file_objs = []
 
     def print_files(self, level=0):
-        print(f'{'  ' * level}"{self.part}" p = "{self.parent.part if self.parent else "N/A"}"')
+        parent = self.parent.part if self.parent else "N/A"
+        print(f'{'  ' * level}"{self.part}" parent = "{parent}"')
         for f in self.file_objs:
-            print(f'{'  ' * level}  "{f.file}" {f.size}')
+            print(f'{'  ' * level}  "{f.file}" size = {f.size}')
         for d in self.subdirs:
             d.print_files(level+1)
 
