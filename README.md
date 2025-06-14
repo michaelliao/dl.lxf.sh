@@ -1,4 +1,5 @@
-# static-file-explorer-generator
-Generate static file explorer for S3, R2, etc.
+# dl.lxf.sh
+
+Download site:
 
 [https://dl.lxf.sh](https://dl.lxf.sh)
