@@ -27,7 +27,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Sync To CloudFlare
-        uses: michaelliao/sync-s3-compatible-action@v2
+        uses: michaelliao/sync-s3-compatible-action@v3
         env:
           SYNC_DIR: site
           SYNC_OPT_UNUSED: delete
