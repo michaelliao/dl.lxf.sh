@@ -1,23 +1,42 @@
-name: Generate Directory Index
+name: Generate DL.LXF.SH
 
 on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
   # Build job
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+
       - name: PIP Install
         run:
           pip install -r requirements.txt
+
+      - name: Sync To CloudFlare
+        uses: michaelliao/sync-s3-compatible-action@v2
+        env:
+          SYNC_DIR: site
+          SYNC_OPT_UNUSED: delete
+          SYNC_TYPE: cloudflare
+          SYNC_REGION: auto
+          SYNC_BUCKET: ${{ secrets.BUCKET }}
+          SYNC_ACCESS_ID: ${{ secrets.ACCESS_KEY_ID }}
+          SYNC_ACCESS_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
+
       - name: Generate Index
         env:
           BUCKET: ${{ secrets.BUCKET }}
