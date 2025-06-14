@@ -61,16 +61,16 @@ def load_env(key, default_value=None):
     return v
 
 def init_boto3():
-    endpoint = load_env('ENDPOINT')
+    region = load_env('REGION')
     access_key_id = load_env('ACCESS_KEY_ID')
     access_key_secret = load_env('ACCESS_KEY_SECRET')
-    region = load_env('REGION', 'auto')
     return boto3.client(
         service_name = 's3',
-        endpoint_url = endpoint,
+        region_name="auto",
+        endpoint_url = f'https://{region}.r2.cloudflarestorage.com',
         aws_access_key_id = access_key_id,
-        aws_secret_access_key = access_key_secret,
-        region_name = region)
+        aws_secret_access_key = access_key_secret
+    )
 
 def list_objects(s3, bucket):
     print(f'list objects for bucket "{bucket}"...')

@@ -39,8 +39,8 @@ jobs:
 
       - name: Generate Index
         env:
+          REGION: ${{ secrets.REGION }}
           BUCKET: ${{ secrets.BUCKET }}
-          ENDPOINT: ${{ secrets.ENDPOINT }}
           ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
           ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
         run:
