@@ -29,7 +29,7 @@ jobs:
           SYNC_ACCESS_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
 
       - name: Generate Index
-        uses: michaelliao/build-index-action@v1
+        uses: michaelliao/build-index-action@v2
         env:
           SYNC_REGION: ${{ secrets.REGION }}
           SYNC_BUCKET: ${{ secrets.BUCKET }}
