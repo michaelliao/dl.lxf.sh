@@ -1,4 +1,4 @@
-name: Generate DL.LXF.SH
+name: Generate static site
 
 on:
   # Runs on pushes targeting the default branch
@@ -16,15 +16,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: PIP Install
-        run:
-          pip install -r requirements.txt
 
       - name: Sync To CloudFlare
         uses: michaelliao/sync-s3-compatible-action@v5
