@@ -38,10 +38,9 @@ jobs:
           SYNC_ACCESS_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
 
       - name: Generate Index
+        uses: michaelliao/build-index-action@v1
         env:
-          REGION: ${{ secrets.REGION }}
-          BUCKET: ${{ secrets.BUCKET }}
-          ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
-          ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
-        run:
-          python3 gen.py
+          SYNC_REGION: ${{ secrets.REGION }}
+          SYNC_BUCKET: ${{ secrets.BUCKET }}
+          SYNC_ACCESS_ID: ${{ secrets.ACCESS_KEY_ID }}
+          SYNC_ACCESS_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
